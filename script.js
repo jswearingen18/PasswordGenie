@@ -33,6 +33,8 @@ var confSymbols;
 var generateBtn = document.querySelector("#generate"); 
 // Write password to the #password input
 function writePassword() {
+  // call empty array again to empty characters array before the function 
+  characters = [];
   // Prompt for user to select how many characters they would like in their password
   var pLength = window.prompt("Please select Password length between 8 - 128");
   // if statement to ensure user meets the min max requirements of the password
@@ -69,9 +71,10 @@ alert("Please try again must be a number between 8 and 128");
      for (var i = 0; i < pLength; i++) {
       password += characters[Math.floor(Math.random() * characters.length)];
      }
- // var password = generatePassword(); 
+ // allows the system to store the array as password
   var passwordText = document.querySelector("#password");
   passwordText.value = password;
+  // returns password inside of text box
 return password;
     }
 // Add event listener to generate button
