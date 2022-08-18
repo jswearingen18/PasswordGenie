@@ -17,16 +17,13 @@ var numbers = ["0","1","2","3","4","5","6","7","8","9"]
 var symbols = ["!","@","#","$","%","&","*","/","?","'","(",")",
 "+","-",",",".",":",";","<",">","=","[","]","^","_","`","~",
 "{","}","|"]
+// empty array to be able to concat other arrays into this
 var characters = []
-//var characters = ["a","b","c","d","e","f","g","h","i","j","k",
-//"l","m","n","o","p","q","r","s","t","u","v","w","x","y","z",
-//"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O",
-//"P","Q","R","S","T","U","V","W","X","Y","Z","0","1","2","3",
-//"4","5","6","7","8","9","!","@","#","$","%","&","*","/","?",
-//"'","(",")","+","-",",",".",":",";","<",">","=","[","]","^",
-//"_","`","~","{","}","|"]
+// variable for password length
 var pLength = 0;
+// variable to capture and store password
 var password = "";
+// variables for the confirmation windows of what characters user would like to use
 var confUpper;
 var confLower;
 var confNumbers;
@@ -34,15 +31,19 @@ var confSymbols;
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate"); 
-
 // Write password to the #password input
 function writePassword() {
+  // Prompt for user to select how many characters they would like in their password
   var pLength = window.prompt("Please select Password length between 8 - 128");
+  // if statement to ensure user meets the min max requirements of the password
+  // contains an alert in case they enter 7 or less or more then 128 
 if (pLength < 8 ||
   pLength > 128) {
 alert("Please try again must be a number between 8 and 128");
+// else statement with an alaert informing and confirming the password length 
   } else {
    alert("Thank you your pass word length is " + pLength + " characters");
+// confirmation windows for character types allowing the usser to choose which arrays they would like to pull from
    var confUpper = confirm("Would user like Upper case Characters?");
    if (confUpper) {
     characters = upperAlphabet.concat(characters);
@@ -59,10 +60,12 @@ alert("Please try again must be a number between 8 and 128");
    if (confSymbols) {
     characters = symbols.concat(characters)
    }
+// alert window for if they choose none of the character types since this would not generate a viable password
    if (!(confUpper || confLower || confNumbers || confSymbols)) {
     alert("You must select at least one character type")
    }
   }
+  // This for statement generates the password
      for (var i = 0; i < pLength; i++) {
       password += characters[Math.floor(Math.random() * characters.length)];
      }
@@ -71,7 +74,5 @@ alert("Please try again must be a number between 8 and 128");
   passwordText.value = password;
 return password;
     }
-
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
