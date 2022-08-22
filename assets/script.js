@@ -35,6 +35,8 @@ var generateBtn = document.querySelector("#generate");
 function writePassword() {
   // call empty array again to empty characters array before the function 
   characters = [];
+  // empties the password to reset everytime
+  password = "";
   // Prompt for user to select how many characters they would like in their password
   var pLength = window.prompt("Please select Password length between 8 - 128");
   // if statement to ensure user meets the min max requirements of the password
